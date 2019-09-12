@@ -18,7 +18,8 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-aosp
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -35,10 +36,6 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     BluetoothResCommon
-
-# Camera
-PRODUCT_PACKAGES += \
-    Snap
 
 # Camera Motor
 PRODUCT_PACKAGES += \
@@ -79,6 +76,9 @@ PRODUCT_BOOT_JARS += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_raphael
+
+PRODUCT_COPY_FILES += \
+    vendor/aosp/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -135,23 +135,9 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    com.gsma.services.nfc \
-    com.gsma.services.nfc.xml \
-    com.nxp.nfc.nq \
-    libnqnfc-nci \
-    nqnfcee_access.xml \
-    nqnfcse_access.xml \
-    NQNfcNci \
-    SecureElement \
-    Tag
-	
-PRODUCT_BOOT_JARS += \
-    com.nxp.nfc.nq
-	
-# OTA
-PRODUCT_PACKAGES += \
-    Updates
+    NfcNci \
+    Tag \
+    com.android.nfc_extras
 
 # Parts
 PRODUCT_PACKAGES += \
